@@ -259,7 +259,6 @@ func (self *BranchesController) viewUpstreamOptions(selectedBranch *models.Branc
 
 	if !selectedBranch.RemoteBranchStoredLocally() {
 		viewDivergenceItem.DisabledReason = self.c.Tr.UpstreamNotSetError
-		unsetUpstreamItem.DisabledReason = self.c.Tr.UpstreamNotSetError
 		upstreamResetItem.DisabledReason = self.c.Tr.UpstreamNotSetError
 		upstreamRebaseItem.DisabledReason = self.c.Tr.UpstreamNotSetError
 	}
