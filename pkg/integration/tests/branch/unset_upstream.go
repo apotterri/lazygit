@@ -17,10 +17,12 @@ var UnsetUpstream = NewIntegrationTest(NewIntegrationTestArgs{
 			NewBranch("test_branch").
 			PushBranch("origin", "test_branch").
 			Checkout("master").
-			SetBranchUpstream("master", "origin/master").
-			RemoveRemoteBranch("origin", "test_branch")
+			SetBranchUpstream("master", "origin/master")
 	},
 	Run: func(t *TestDriver, keys config.KeybindingConfig) {
+		// TODO: RemoveRemoteBranch doesn't work for some reason
+		t.Shell().RunShellCommand("git push origin --delete test_branch")
+
 		t.Views().Branches().
 			Focus().
 			Press(keys.Universal.NextScreenMode). // we need to enlargen the window to see the upstream
