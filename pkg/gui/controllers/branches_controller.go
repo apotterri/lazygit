@@ -257,6 +257,10 @@ func (self *BranchesController) viewUpstreamOptions(selectedBranch *models.Branc
 		Key:     'r',
 	}
 
+	if !selectedBranch.IsTrackingRemote() {
+		unsetUpstreamItem.DisabledReason = self.c.Tr.UpstreamNotSetError
+	}
+
 	if !selectedBranch.RemoteBranchStoredLocally() {
 		viewDivergenceItem.DisabledReason = self.c.Tr.UpstreamNotSetError
 		upstreamResetItem.DisabledReason = self.c.Tr.UpstreamNotSetError
