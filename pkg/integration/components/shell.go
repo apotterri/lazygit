@@ -345,7 +345,7 @@ func (self *Shell) SetBranchUpstream(branch string, upstream string) *Shell {
 }
 
 func (self *Shell) RemoveRemoteBranch(remoteName string, branch string) *Shell {
-	self.RunCommand([]string{"git", "-C", "../" + remoteName, "branch", "-d", branch})
+	self.RunCommand([]string{"git", "push", remoteName, "--delete", branch})
 
 	return self
 }
